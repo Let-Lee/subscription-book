@@ -1,0 +1,5 @@
+.endpoint-tools{margin-left:auto;display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap}
+.copy-endpoint-button{border:0;border-radius:7px;background:#f2f2f7;color:#4a4a4d;font-size:11px;padding:7px 9px;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.copy-endpoint-button:hover{background:#e5e5ea;color:#1d1d1f}
+.endpoint-tools .probe-button{margin-left:0}
+@media(max-width:600px){.endpoint-result{flex-wrap:wrap;gap:10px}.endpoint-tools{width:100%;margin-left:0;justify-content:flex-start}}
