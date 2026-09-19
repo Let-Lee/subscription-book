@@ -1,0 +1,19 @@
+node_modules/
+dist/
+release/
+release-preview/
+*.asar
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.key
+
+# Local records must never be committed.
+subscriptions.json
+ai-gateways.json
+domains.json
+servers.json

@@ -1,2 +1,40 @@
-# subscription-book
-Local-first desktop manager for subscriptions, AI gateways, domains, and cloud servers.
+# 订阅簿 · Subscription Book
+
+一款纯本地的 Mac / Windows 桌面应用，把机场订阅、AI 中转站、域名和云服务器放在一处管理。无需账号或自建服务。
+
+## 功能
+
+- **订阅**：保存订阅链接，读取服务端提供的流量与到期信息，也可手动覆盖显示名称、官网和到期日。
+- **AI 中转**：为每个中转站保存多个 API 地址与 API Key；按需检测可用性、延迟和模型列表，并可一键复制地址或 Key。
+- **域名**：记录注册商、到期日、DNS、管理后台和关联服务器；公开信息查询使用 RDAP，`.cn` 域名使用 CNNIC WHOIS。手填到期日优先；查不到时显示“未获取”。
+- **云服务器**：记录实例、IP、配置、计费和到期信息；点击时分别检测 TCP 端口与网站地址。
+
+## 本地运行
+
+需要 Node.js 22.12+ 和 npm。安装依赖后运行：
+
+```bash
+npm ci
+npm run app
+```
+
+`npm run app` 会先构建页面，再启动 Electron。若要单独构建前端，运行 `npm run build`。
+
+打包命令：
+
+```bash
+npm run dist:mac
+npm run dist:win
+```
+
+安装包会生成到 `release/`，不会进入 Git 仓库。跨平台打包可能需要额外的系统工具；在目标系统上构建最稳妥。本项目目前没有代码签名，macOS 和 Windows 可能显示系统安全提示。
+
+## 数据与隐私
+
+记录保存在 Electron 的本机 `userData` 目录中，不会上传到项目作者的服务器。请自行备份本机数据。当前 AI API Key **以明文保存在本机 `ai-gateways.json`**；不要把该文件、订阅链接或任何密钥提交到公开仓库。
+
+只有在你主动点击读取或检测时，应用才会连接相应的订阅服务、模型 API、RDAP / CNNIC WHOIS 或你填写的服务器地址。检测结果只反映当前电脑当时的网络连接，不代表云厂商提供的实例健康状态。
+
+## 许可证
+
+[MIT](LICENSE)。

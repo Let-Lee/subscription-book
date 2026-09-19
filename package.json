@@ -1,0 +1,39 @@
+{
+  "name": "subscription-book",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A local-first desktop manager for subscriptions, AI gateways, domains, and cloud servers.",
+  "author": "Let-Lee",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "app": "npm run build && electron .",
+    "dist:mac": "npm run build && electron-builder --mac --dir",
+    "dist:win": "npm run build && electron-builder --win portable --x64"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.lee.subscriptionbook",
+    "productName": "订阅簿",
+    "directories": { "output": "release" },
+    "compression": "normal",
+    "files": ["dist/**/*", "electron/**/*", "package.json"],
+    "mac": { "category": "public.app-category.utilities", "target": ["dir"], "icon": "assets/icon-selected.icns" },
+    "win": { "target": ["portable"], "icon": "assets/icon-selected.ico" },
+    "artifactName": "订阅簿-${version}-Windows-Portable.${ext}"
+  }
+}
